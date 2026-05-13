@@ -163,6 +163,11 @@ function renderRound(i) {
   const e = S.edition;
   if (i === 'standings') { renderStandings(); return; }
   const r = e.rounds[i];
+   if (!r) {
+  document.getElementById('ed-main').innerHTML =
+    '<div class="wip-box">No round data found.</div>';
+  return;
+}
   document.getElementById('ed-main').innerHTML = `
     <div class="sec-hd"><h3>${r.label}</h3><div class="sec-hd-line"></div></div>
     <div class="m-list">
