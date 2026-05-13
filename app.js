@@ -139,8 +139,7 @@ function openEdition(id) {
     <div class="es-lbl">الأدوار</div>
     ${e.rounds.map((r, i) => `
       <div class="es-item ${i===0?'on':''}" id="esi-${i}" onclick="switchRound(${i})">
-      <span>${r.label}</span>
-<span class="es-cnt">${(r.matches || []).length}</span>
+        <span>${r.label}</span><span class="es-cnt">${r.matches.length}</span>
       </div>`).join('')}
     ${e.standings && e.standings.length ? `
       <div class="es-lbl" style="margin-top:.5rem">الجداول</div>
