@@ -226,8 +226,8 @@ if (!m) return;
     <div class="det-grid">
       <div class="det-card">
         <h4>الأهداف</h4>
-        ${m.goals && m.goals.length
-          ? m.goals.map(g=>`<div class="g-row"><span class="g-ico">⚽</span><span>${g}</span></div>`).join('')
+Array.isArray(m.goals) && m.goals.length
+? m.goals.map(g=>`<div class="g-row"><span class="g-ico">⚽</span><span>${g}</span></div>`).join('')
           : '<span style="color:var(--t4);font-size:13px">مباراة بلا أهداف</span>'}
       </div>
       <div class="det-card">
