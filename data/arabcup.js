@@ -1,10 +1,3 @@
-const fixScore = (score) => {
-  if (!score) return score;
-
-  // Force LTR rendering for football scores inside Arabic UI
-  return `\u202A${score}\u202C`;
-};
-
 const AFL_DATA = {
   meta: {
     name: "Arab Football Library",
