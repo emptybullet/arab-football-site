@@ -76,7 +76,7 @@ const AFL_DATA = {
       id: "AC1966", year: 1966, host: "العراق", city: "بغداد",
       dates: "1-10 أبريل 1966", teams: 8,
       champion: "العراق", runner: "سوريا", third: "ليبيا",
-      format: "مجموعتان + إقصاء", goals: null, matches: 15,
+      format: "مجموعتان + إقصاء", goals: 119, matches: 22,
       note: "العراق يفوز باللقب الثاني على أرضه. ليبيا تسجّل 21-0 على عُمان — أكبر فوز في تاريخ البطولة.",
       rounds: [
         { label: "المجموعة الأولى", matches: [
