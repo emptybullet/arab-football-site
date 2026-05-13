@@ -207,8 +207,9 @@ function renderStandings() {
 function openMatch(ri, mi) {
   const e = S.edition;
   const r = e.rounds[ri];
-  const m = r.matches[mi];
-  document.getElementById('match-detail-block').innerHTML = `
+const m = (r.matches || [])[mi];
+if (!m) return;
+   document.getElementById('match-detail-block').innerHTML = `
     <div class="match-hero">
       <div class="mh-grid">
         <div class="mht"><span class="mhflag">${fl(m.h)}</span><div class="mhname">${m.h}</div></div>
