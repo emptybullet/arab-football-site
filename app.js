@@ -166,8 +166,8 @@ function renderRound(i) {
   document.getElementById('ed-main').innerHTML = `
     <div class="sec-hd"><h3>${r.label}</h3><div class="sec-hd-line"></div></div>
     <div class="m-list">
-      ${r.matches.map((m, mi) => `
-        <div class="mc ${m.isFinal?'final':''}" onclick="openMatch(${i},${mi})">
+${(r.matches || []).map((m, mi) => `
+<div class="mc ${m.isFinal?'final':''}" onclick="openMatch(${i},${mi})">
           <div class="mh"><div class="m-team">${m.h} ${fl(m.h)}</div><div class="m-date">${m.date||''}</div></div>
           <div class="msb"><span class="msc">${m.s}</span><span class="mslbl">${m.isFinal?'🏆':'نتيجة'}</span></div>
           <div class="ma"><div class="m-team">${fl(m.a)} ${m.a}</div><div class="m-date">${m.venue||''}</div></div>
