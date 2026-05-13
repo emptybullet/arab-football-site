@@ -1,3 +1,10 @@
+const fixScore = (score) => {
+  if (!score) return score;
+
+  // Force LTR rendering for football scores inside Arabic UI
+  return `\u202A${score}\u202C`;
+};
+
 const AFL_DATA = {
   meta: {
     name: "Arab Football Library",
@@ -14,6 +21,7 @@ const AFL_DATA = {
     'مصر أولمبي':'🇪🇬','المغرب أ':'🇲🇦','مصر أ':'🇪🇬','الجزائر أولمبي':'🇩🇿',
     'شمال اليمن':'🇾🇪','عمان':'🇴🇲'
   },
+
 
   editions: [
     {
@@ -516,3 +524,14 @@ const AFL_DATA = {
     },
   ]
 };
+
+// Automatically fix ALL scores globally
+AFL_DATA.editions.forEach(edition => {
+  edition.rounds?.forEach(round => {
+    round.matches?.forEach(match => {
+      if (match.s) {
+        match.s = fixScore(match.s);
+      }
+    });
+  });
+});
