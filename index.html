@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="المكتبة العربية لكرة القدم — الأرشيف الشامل: كأس العرب، الدوريات المحلية، البطولات القارية">
+<title>المكتبة العربية لكرة القدم | Arab Football Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g900:#040c06;--g800:#081208;--g700:#0d2014;--g600:#163320;
+  --g500:#1e4a2e;--g400:#2e7d52;--g300:#3d9966;
+  --gold:#c9a84c;--goldf:#f0d880;
+  --s0:#060d08;--s1:#0c1610;--s2:#121e14;--s3:#182618;--s4:#1e2e1e;
+  --b1:#1c2e1e;--b2:#263828;--b3:#324838;
+  --t1:#ddeae0;--t2:#92b09c;--t3:#527060;--t4:#304038;
+  --fa:'Tajawal',sans-serif;--fe:'Barlow Condensed',sans-serif;--rad:8px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--s0);color:var(--t1);font-family:var(--fa);font-size:15px;direction:rtl;min-height:100vh}
+a{color:inherit;text-decoration:none}
+button{font-family:var(--fa);cursor:pointer;border:none;background:none}
+.hide{display:none!important}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--s1)}
+::-webkit-scrollbar-thumb{background:var(--b2);border-radius:3px}
+
+/* HEADER */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(4,12,6,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--b1);height:54px;display:flex;align-items:center}
+.hdr-inner{max-width:1400px;margin:0 auto;padding:0 1.25rem;width:100%;display:flex;align-items:center;gap:1.25rem}
+.logo{display:flex;align-items:center;gap:.45rem;cursor:pointer}
+.logo-afl{font-family:var(--fe);font-size:20px;font-weight:800;color:var(--gold);letter-spacing:1px}
+.logo-sep{color:var(--b3)}
+.logo-txt{font-size:13px;color:var(--t3);font-weight:600}
+.hdr-nav{display:flex;gap:.1rem;margin-right:auto}
+.hn{padding:.32rem .75rem;font-size:13px;color:var(--t3);border-radius:5px;cursor:pointer;transition:all .15s;border:1px solid transparent;font-weight:500}
+.hn:hover{color:var(--t1);background:var(--s3)}
+.hn.on{color:var(--gold);border-color:var(--b2);background:var(--s2)}
+.hdr-lang{font-family:var(--fe);font-size:11px;font-weight:700;color:var(--t3);border:1px solid var(--b2);padding:.2rem .55rem;border-radius:4px;letter-spacing:1px;cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding-top:54px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 45%,rgba(46,125,82,.16) 0%,transparent 70%),linear-gradient(180deg,var(--g800) 0%,var(--s0) 100%)}
+.hero-bg::after{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 44px,rgba(255,255,255,.01) 44px,rgba(255,255,255,.01) 45px),repeating-linear-gradient(90deg,transparent,transparent 44px,rgba(255,255,255,.01) 44px,rgba(255,255,255,.01) 45px)}
+.hero-body{position:relative;z-index:2;text-align:center;padding:2rem 1.5rem;max-width:800px}
+.hero-sup{font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:1rem}
+.hero-h1{font-size:clamp(40px,7vw,72px);font-weight:900;line-height:1.05;color:#fff;margin-bottom:.85rem}
+.hero-h1 span{color:var(--gold)}
+.hero-p{font-size:16px;color:var(--t2);margin-bottom:2.25rem}
+.hero-nums{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;margin-bottom:2.25rem}
+.hn2{text-align:center;padding:0 1.25rem}
+.hn2-n{display:block;font-family:var(--fe);font-size:34px;font-weight:800;color:var(--gold);line-height:1}
+.hn2-l{display:block;font-size:10px;color:var(--t4);margin-top:2px;letter-spacing:.3px}
+.hn2-div{width:1px;height:36px;background:var(--b2)}
+.hero-cta{background:var(--g400);color:#fff;padding:.8rem 2rem;border-radius:6px;font-size:14px;font-weight:700;border:1px solid var(--g300);transition:all .15s;cursor:pointer}
+.hero-cta:hover{background:var(--g300);transform:translateY(-2px)}
+
+/* PAGES */
+.page{display:none;padding-top:54px;min-height:100vh}
+.page.on{display:block}
+.wrap{max-width:1400px;margin:0 auto;padding:2rem 1.25rem}
+
+/* TITLES */
+.pg-title{font-size:26px;font-weight:900;color:#fff;margin-bottom:.3rem}
+.pg-sub{font-size:13px;color:var(--t3);margin-bottom:2rem}
+.sec-hd{display:flex;align-items:center;gap:.6rem;margin:1.5rem 0 .8rem}
+.sec-hd h3{font-size:13px;font-weight:700;color:var(--t2);white-space:nowrap}
+.sec-hd-line{flex:1;height:1px;background:var(--b1)}
+
+/* PILLARS */
+.pillars{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:2rem}
+.pillar{background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:1.5rem;cursor:pointer;transition:all .18s;position:relative;overflow:hidden}
+.pillar::before{content:'';position:absolute;top:0;right:0;width:3px;height:100%;background:var(--gold);opacity:0;transition:opacity .18s}
+.pillar:hover{border-color:var(--b3);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.4)}
+.pillar:hover::before{opacity:1}
+.pillar-icon{font-size:30px;margin-bottom:.7rem}
+.pillar-title{font-size:17px;font-weight:800;color:#fff;margin-bottom:.3rem}
+.pillar-sub{font-size:13px;color:var(--t3);line-height:1.5;margin-bottom:.8rem}
+.pillar-tags{display:flex;gap:.3rem;flex-wrap:wrap}
+.ptag{font-size:11px;padding:2px 8px;border-radius:3px;background:var(--s3);color:var(--t3);border:1px solid var(--b2)}
+
+/* COMP LIST */
+.comp-list{display:flex;flex-direction:column;gap:.4rem}
+.comp-item{background:var(--s1);border:1px solid var(--b1);border-radius:var(--rad);padding:.85rem 1.1rem;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.comp-item:hover{border-color:var(--b3);background:var(--s2);transform:translateX(-2px)}
+.cil{display:flex;align-items:center;gap:.85rem}
+.ci-flag{font-size:22px;min-width:28px}
+.ci-name{font-size:14px;font-weight:700}
+.ci-meta{font-size:11px;color:var(--t3);margin-top:2px}
+.cbadge{font-size:11px;padding:2px 9px;border-radius:3px;font-weight:600;white-space:nowrap}
+.b-ok{background:rgba(46,125,82,.2);color:#7dd4a0;border:1px solid rgba(46,125,82,.3)}
+.b-soon{background:rgba(201,168,76,.1);color:var(--gold);border:1px solid rgba(201,168,76,.2)}
+.b-active{background:rgba(61,153,102,.15);color:#6dbf8f;border:1px solid rgba(61,153,102,.3)}
+.ci-arrow{color:var(--t4);font-size:13px}
+
+/* COUNTRY GRID */
+.country-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.55rem}
+.cc{background:var(--s1);border:1px solid var(--b1);border-radius:var(--rad);padding:.8rem 1rem;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:.8rem}
+.cc:hover{border-color:var(--b3);background:var(--s2)}
+.cc-flag{font-size:22px;min-width:28px}
+.cc-name{font-size:14px;font-weight:700}
+.cc-sub{font-size:11px;color:var(--t3);margin-top:1px}
+.cc-arr{color:var(--t4);margin-right:auto;font-size:13px}
+
+/* COUNTRY HERO */
+.ch{background:linear-gradient(135deg,var(--g700),var(--s1));border:1px solid var(--b2);border-radius:10px;padding:1.5rem;margin-bottom:1.25rem}
+.ch-top{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.ch-flag{font-size:38px}
+.ch-title{font-size:22px;font-weight:900;color:#fff}
+.ch-sub{font-size:12px;color:var(--t2);margin-top:2px}
+.ch-comps{display:flex;flex-direction:column;gap:.4rem}
+.chc{background:var(--s2);border:1px solid var(--b1);border-radius:6px;padding:.7rem 1rem;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:space-between}
+.chc:hover{border-color:var(--b3);background:var(--s3)}
+.chc-name{font-size:14px;font-weight:700}
+.chc-info{font-size:11px;color:var(--t3);margin-top:2px}
+.chc-badge{font-size:11px;color:var(--t3)}
+
+/* COMP HERO */
+.comp-hero{background:linear-gradient(135deg,var(--g700),var(--s1));border:1px solid var(--b2);border-radius:10px;padding:1.5rem;margin-bottom:1.25rem}
+.comph-title{font-size:22px;font-weight:900;color:#fff;margin-bottom:.25rem}
+.comph-sub{font-size:12px;color:var(--t2);margin-bottom:1rem}
+.comph-stats{display:flex;gap:.5rem;flex-wrap:wrap}
+.chs{background:rgba(0,0,0,.3);border:1px solid var(--b2);border-radius:5px;padding:.35rem .7rem;text-align:center}
+.chs-n{display:block;font-family:var(--fe);font-size:18px;font-weight:700;color:var(--gold);line-height:1}
+.chs-l{display:block;font-size:9px;color:var(--t3);margin-top:2px}
+
+/* WIP */
+.wip-box{background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.15);border-radius:var(--rad);padding:1.5rem;text-align:center;color:var(--t2);font-size:14px;line-height:1.8;margin-top:.75rem}
+.wip-box strong{color:var(--gold);font-size:16px;display:block;margin-bottom:.4rem}
+
+/* HISTORY TABLE */
+.tbl-wrap{overflow-x:auto}
+.htbl{width:100%;border-collapse:collapse;font-size:13px}
+.htbl th{background:var(--g700);color:var(--t2);padding:.5rem .75rem;text-align:right;font-weight:700;font-size:11px;white-space:nowrap}
+.htbl td{padding:.55rem .75rem;border-bottom:1px solid var(--b1);vertical-align:middle}
+.htbl tr:hover td{background:var(--s2)}
+.htbl .yr{font-family:var(--fe);font-size:20px;font-weight:800;color:var(--gold);cursor:pointer}
+.htbl .yr:hover{color:var(--goldf)}
+.htbl .champ{font-weight:700}
+.htbl .tbd{color:var(--t4);font-style:italic}
+
+/* RECORDS */
+.rec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.7rem}
+.rec-card{background:var(--s1);border:1px solid var(--b1);border-radius:var(--rad);padding:.9rem 1rem}
+.rec-card h4{font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.5px;margin-bottom:.6rem;text-transform:uppercase}
+.rec-row{display:flex;gap:.5rem;align-items:flex-start;padding:.24rem 0;font-size:13px;color:var(--t2);border-bottom:1px solid var(--b1)}
+.rec-row:last-child{border:none}
+.rec-ico{min-width:18px}
+
+/* EDITION GRID */
+.ed-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:.9rem}
+.ed-card{background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:1.2rem;cursor:pointer;transition:all .18s;position:relative;overflow:hidden}
+.ed-card:hover{border-color:var(--b3);transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.4)}
+.ec-year{font-family:var(--fe);font-size:40px;font-weight:800;color:var(--gold);line-height:1;margin-bottom:.35rem}
+.ec-host{font-size:12px;color:var(--t3);margin-bottom:.65rem}
+.ec-champ{display:flex;align-items:center;gap:.5rem;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.15);border-radius:5px;padding:.35rem .7rem;margin-bottom:.65rem}
+.ec-cl{font-size:10px;color:var(--t3)}
+.ec-cn{font-size:13px;font-weight:700;color:var(--gold)}
+.ec-tags{display:flex;gap:.3rem;flex-wrap:wrap}
+.ec-tag{font-size:11px;padding:2px 7px;border-radius:3px;background:var(--s3);color:var(--t3);border:1px solid var(--b2)}
+
+/* EDITION DETAIL */
+.ed-layout{display:grid;grid-template-columns:190px 1fr;gap:1rem}
+.ed-sidebar{background:var(--s1);border:1px solid var(--b1);border-radius:var(--rad);padding:.5rem 0;height:fit-content;position:sticky;top:64px}
+.es-lbl{font-size:9px;letter-spacing:2px;color:var(--t4);padding:.5rem .85rem .2rem;text-transform:uppercase;direction:ltr;text-align:right}
+.es-item{padding:.42rem .85rem;font-size:13px;color:var(--t3);cursor:pointer;transition:all .12s;border-right:2px solid transparent;display:flex;align-items:center;justify-content:space-between}
+.es-item:hover{color:var(--t1);background:var(--s2)}
+.es-item.on{color:var(--gold);background:rgba(201,168,76,.06);border-right-color:var(--gold);font-weight:700}
+.es-cnt{font-size:10px;background:var(--s3);color:var(--t4);padding:1px 6px;border-radius:8px}
+
+/* MATCHES */
+.m-list{display:flex;flex-direction:column;gap:.4rem}
+.mc{background:var(--s1);border:1px solid var(--b1);border-radius:var(--rad);padding:.7rem .95rem;display:grid;grid-template-columns:1fr 76px 1fr;align-items:center;gap:.4rem;cursor:pointer;transition:all .15s}
+.mc:hover{border-color:var(--b3);background:var(--s2);transform:translateX(-2px)}
+.mc.final{border-color:rgba(201,168,76,.25);background:rgba(201,168,76,.03)}
+.mh{text-align:right}
+.ma{text-align:left}
+.m-team{font-size:13px;font-weight:700}
+.m-date{font-size:10px;color:var(--t4);margin-top:2px}
+.msb{background:var(--s3);border:1px solid var(--b2);border-radius:5px;text-align:center;padding:.25rem .4rem}
+.msc{font-family:var(--fe);font-size:16px;font-weight:700;color:var(--gold);letter-spacing:1px;display:block}
+.mslbl{font-size:9px;color:var(--t4)}
+
+/* MATCH DETAIL */
+.match-hero{background:linear-gradient(135deg,var(--g700),var(--s1));border:1px solid var(--b2);border-radius:10px;padding:1.75rem;text-align:center;margin-bottom:.85rem}
+.mh-grid{display:grid;grid-template-columns:1fr 110px 1fr;align-items:center;gap:.85rem}
+.mht{text-align:center}
+.mhflag{font-size:36px;display:block;margin-bottom:.35rem}
+.mhname{font-size:16px;font-weight:800}
+.mhsb{text-align:center}
+.mhscore{font-family:var(--fe);font-size:48px;font-weight:800;color:var(--gold);line-height:1;display:block}
+.mhround{font-size:10px;color:var(--t4);margin-top:.25rem;letter-spacing:.5px}
+.mhmeta{display:flex;justify-content:center;gap:1.5rem;margin-top:1rem;padding-top:.85rem;border-top:1px solid var(--b1);flex-wrap:wrap}
+.mhmi-l{font-size:9px;color:var(--t4)}
+.mhmi-v{font-size:12px;font-weight:600;color:var(--t2);margin-top:2px}
+.det-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
+.det-card{background:var(--s1);border:1px solid var(--b1);border-radius:var(--rad);padding:.8rem}
+.det-card h4{font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.5px;margin-bottom:.55rem;text-transform:uppercase}
+.g-row{display:flex;gap:.45rem;align-items:flex-start;padding:.22rem 0;font-size:13px;color:var(--t2)}
+.g-ico{min-width:16px}
+
+/* STANDINGS */
+.stbl{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:.6rem}
+.stbl th{background:var(--g700);color:var(--t2);padding:.38rem .55rem;text-align:center;font-weight:700;font-size:10px}
+.stbl th:first-child,.stbl td:first-child{text-align:right;padding-right:.7rem}
+.stbl td{padding:.36rem .55rem;text-align:center;border-bottom:1px solid var(--b1)}
+.stbl tr:nth-child(even) td{background:rgba(255,255,255,.015)}
+.stbl tr.q td:first-child{border-right:3px solid var(--g400)}
+.stbl .pts{font-weight:800;color:var(--gold)}
+.grp-lbl{background:var(--g700);color:var(--gold);padding:.35rem .7rem;border-radius:4px;font-size:11px;font-weight:700;margin:.7rem 0 .35rem;border-right:3px solid var(--gold)}
+
+/* BACK */
+.back-btn{display:inline-flex;align-items:center;gap:.4rem;font-size:13px;color:var(--t3);padding:.35rem .7rem;border:1px solid var(--b2);border-radius:5px;margin-bottom:1.25rem;transition:all .15s}
+.back-btn:hover{color:var(--gold);border-color:var(--gold)}
+
+/* FOOTER */
+.footer{background:var(--s1);border-top:1px solid var(--b1);padding:2rem 1.5rem;text-align:center;margin-top:3rem}
+.footer-logo{font-family:var(--fe);font-size:26px;font-weight:800;color:var(--gold);margin-bottom:.4rem}
+.footer-txt{font-size:12px;color:var(--t3);margin-bottom:.2rem}
+.footer-copy{font-size:11px;color:var(--t4)}
+
+/* NOTE */
+.note-box{background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.15);border-radius:var(--rad);padding:.65rem .85rem;font-size:13px;color:var(--t2);line-height:1.6;margin-top:.85rem}
+.note-box strong{color:var(--gold)}
+
+@media(max-width:768px){
+  .logo-txt{display:none}
+  .hn{padding:.3rem .5rem;font-size:12px}
+  .ed-layout{grid-template-columns:1fr}
+  .ed-sidebar{position:static;display:flex;flex-wrap:wrap;gap:.3rem;padding:.5rem}
+  .es-item{border-right:none;border:1px solid var(--b2);border-radius:4px;padding:.28rem .6rem;font-size:12px}
+  .mh-grid{grid-template-columns:1fr 80px 1fr}
+  .mhscore{font-size:34px}
+  .det-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="hdr-inner">
+    <div class="logo" onclick="goHome()">
+      <span class="logo-afl">AFL</span>
+      <span class="logo-sep">|</span>
+      <span class="logo-txt">المكتبة العربية لكرة القدم</span>
+    </div>
+    <nav class="hdr-nav">
+      <div class="hn" id="nav-national" onclick="goPage('national')">المنتخبات</div>
+      <div class="hn" id="nav-clubs" onclick="goPage('clubs')">الأندية</div>
+      <div class="hn" id="nav-domestic" onclick="goPage('domestic')">الدوريات</div>
+      <div class="hn" id="nav-history" onclick="goPage('history')">التاريخ</div>
+    </nav>
+    <div class="hdr-lang">EN</div>
+  </div>
+</header>
+
+<section class="hero" id="hero-section">
+  <div class="hero-bg"></div>
+  <div class="hero-body">
+    <div class="hero-sup">الأرشيف الشامل · كرة القدم العربية منذ 1963</div>
+    <h1 class="hero-h1">المكتبة العربية<br><span>لكرة القدم</span></h1>
+    <p class="hero-p">كل مباراة · كل بطولة · كل دوري · كل هدف · موثّق ومُحكم</p>
+    <div class="hero-nums">
+      <div class="hn2"><span class="hn2-n">24</span><span class="hn2-l">دولة عربية</span></div>
+      <div class="hn2-div"></div>
+      <div class="hn2"><span class="hn2-n">50+</span><span class="hn2-l">بطولة</span></div>
+      <div class="hn2-div"></div>
+      <div class="hn2"><span class="hn2-n">11</span><span class="hn2-l">نسخة كأس العرب</span></div>
+      <div class="hn2-div"></div>
+      <div class="hn2"><span class="hn2-n">200+</span><span class="hn2-l">مباراة موثّقة</span></div>
+    </div>
+    <button class="hero-cta" onclick="goPage('national')">استكشف الأرشيف ←</button>
+  </div>
+</section>
+
+<!-- HOME -->
+<div class="page on" id="pg-home">
+  <div class="wrap">
+    <div class="pg-title">ماذا تريد أن تستكشف؟</div>
+    <div class="pg-sub">اختر القسم</div>
+    <div class="pillars">
+      <div class="pillar" onclick="goPage('national')">
+        <div class="pillar-icon">🌍</div>
+        <div class="pillar-title">بطولات المنتخبات</div>
+        <div class="pillar-sub">كأس العرب، AFCON، كأس آسيا، كأس العالم — المنتخبات العربية في كل البطولات الكبرى.</div>
+        <div class="pillar-tags"><span class="ptag">كأس العرب</span><span class="ptag">AFCON</span><span class="ptag">كأس آسيا</span><span class="ptag">كأس العالم</span></div>
+      </div>
+      <div class="pillar" onclick="goPage('clubs')">
+        <div class="pillar-icon">🏆</div>
+        <div class="pillar-title">بطولات الأندية العربية</div>
+        <div class="pillar-sub">كأس العرب للأندية، البطولة العربية، السوبر العربي — منذ 1981 إلى اليوم.</div>
+        <div class="pillar-tags"><span class="ptag">كأس العرب للأندية</span><span class="ptag">البطولة العربية</span><span class="ptag">السوبر العربي</span></div>
+      </div>
+      <div class="pillar" onclick="goPage('domestic')">
+        <div class="pillar-icon">⚽</div>
+        <div class="pillar-title">الدوريات والكؤوس المحلية</div>
+        <div class="pillar-sub">دوري الدرجة الأولى وكأس المحلي والسوبر الوطني لكل دولة من الـ 24 دولة العربية.</div>
+        <div class="pillar-tags"><span class="ptag">الدوري السعودي</span><span class="ptag">الدوري المصري</span><span class="ptag">24 دولة</span></div>
+      </div>
+      <div class="pillar" onclick="goPage('history')">
+        <div class="pillar-icon">📖</div>
+        <div class="pillar-title">السجل التاريخي</div>
+        <div class="pillar-sub">أبطال التاريخ والأرقام القياسية والإحصاءات الشاملة لجميع البطولات.</div>
+        <div class="pillar-tags"><span class="ptag">أبطال التاريخ</span><span class="ptag">أرقام قياسية</span><span class="ptag">إحصاءات</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NATIONAL -->
+<div class="page" id="pg-national">
+  <div class="wrap">
+    <div class="pg-title">بطولات المنتخبات العربية</div>
+    <div class="pg-sub">البطولات الرسمية التي شاركت فيها المنتخبات العربية</div>
+    <div class="sec-hd"><h3>البطولات العربية</h3><div class="sec-hd-line"></div></div>
+    <div class="comp-list">
+      <div class="comp-item" onclick="openComp('arab-cup')">
+        <div class="cil"><div class="ci-flag">🏆</div><div><div class="ci-name">كأس العرب للمنتخبات</div><div class="ci-meta">1963 — 2021 · 11 نسخة · 6 أبطال · العراق الأكثر تتويجاً (4 ألقاب)</div></div></div>
+        <div style="display:flex;align-items:center;gap:.5rem"><span class="cbadge b-ok">مكتمل ✓</span><span class="ci-arrow">←</span></div>
+      </div>
+      <div class="comp-item" onclick="openComp('arab-nations')">
+        <div class="cil"><div class="ci-flag">🌍</div><div><div class="ci-name">كأس الأمم العربية — UAFA</div><div class="ci-meta">2002 — 2012 · 3 نسخ · بطولة المنتخبات تحت إشراف الاتحاد العربي</div></div></div>
+        <div style="display:flex;align-items:center;gap:.5rem"><span class="cbadge b-soon">قريباً</span><span class="ci-arrow">←</span></div>
+      </div>
+    </div>
+    <div class="sec-hd"><h3>البطولات القارية — المشاركات العربية</h3><div class="sec-hd-line"></div></div>
+    <div class="comp-list">
+      <div class="comp-item" onclick="openComp('afcon')">
+        <div class="cil"><div class="ci-flag">🌍</div><div><div class="ci-name">كأس أمم أفريقيا — المنتخبات العربية</div><div class="ci-meta">مصر (7×) · المغرب · تونس (1×) · الجزائر (2×) · ليبيا · موريتانيا · جزر القمر · السودان</div></div></div>
+        <div style="display:flex;align-items:center;gap:.5rem"><span class="cbadge b-soon">قريباً</span><span class="ci-arrow">←</span></div>
+      </div>
+      <div class="comp-item" onclick="openComp('afc-cup')">
+        <div class="cil"><div class="ci-flag">🏅</div><div><div class="ci-name">كأس آسيا — المنتخبات العربية</div><div class="ci-meta">قطر (1×) · السعودية (3×) · العراق (1×) · الكويت (1×) والبقية</div></div></div>
+        <div style="display:flex;align-items:center;gap:.5rem"><span class="cbadge b-soon">قريباً</span><span class="ci-arrow">←</span></div>
+      </div>
+      <div class="comp-item" onclick="openComp('world-cup')">
+        <div class="cil"><div class="ci-flag">🌐</div><div><div class="ci-name">كأس العالم — المنتخبات العربية</div><div class="ci-meta">من مصر 1934 إلى قطر 2022 · المغرب نصف نهائي 2022 · تاريخ كامل</div></div></div>
+        <div style="display:flex;align-items:center;gap:.5rem"><span class="cbadge b-soon">قريباً</span><span class="ci-arrow">←</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CLUBS -->
+<div class="page" id="pg-clubs">
+  <div class="wrap">
+    <div class="pg-title">بطولات الأندية العربية</div>
+    <div class="pg-sub">البطولات القارية للأندية تحت إشراف الاتحاد العربي لكرة القدم UAFA</div>
+    <div class="sec-hd"><h3>البطولات</h3><div class="sec-hd-line"></div></div>
+    <div class="comp-list">
+      <div class="comp-item" onclick="openComp('arab-club-champs')">
+        <div class="cil"><div class="ci-flag">🏆</div><div><div class="ci-name">كأس العرب للأندية البطلة</div><div class="ci-meta">1981 — 1998 · 14 نسخة · الزمالك (4×) والرجاء (3×) أبرز الأبطال</div></div></div>
+        <div style="display:flex;align-items:center;gap:.5rem"><span class="cbadge b-soon">قريباً</span><span class="ci-arrow">←</span></div>
+      </div>
+      <div class="comp-item" onclick="openComp('arab-cup-winners')">
+        <div class="cil"><div class="ci-flag">🥇</div><div><div class="ci-name">كأس العرب لأبطال الكؤوس</div><div class="ci-meta">1999 — 2002 · 4 نسخ · بطولة أبطال كؤوس الدوري</div></div></div>
+        <div style="display:flex;align-items:center;gap:.5rem"><span class="cbadge b-soon">قريباً</span><span class="ci-arrow">←</span></div>
+      </div>
+      <div class="comp-item" onclick="openComp('uafa-champions')">
+        <div class="cil"><div class="ci-flag">🌟</div><div><div class="ci-name">البطولة العربية للأندية — UAFA</div><div class="ci-meta">2003 — الآن · البديل الحديث · الأهلي والزمالك والهلال أبرز المشاركين</div></div></div>
+        <div style="display:flex;align-items:center;gap:.5rem"><span class="cbadge b-active">نشط</span><span class="ci-arrow">←</span></div>
+      </div>
+      <div class="comp-item" onclick="openComp('arab-super-club')">
+        <div class="cil"><div class="ci-flag">⭐</div><div><div class="ci-name">كأس السوبر العربي للأندية</div><div class="ci-meta">مباريات السوبر بين أبطال الدوري وأبطال الكأس على مستوى عربي</div></div></div>
+        <div style="display:flex;align-items:center;gap:.5rem"><span class="cbadge b-soon">قريباً</span><span class="ci-arrow">←</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DOMESTIC -->
+<div class="page" id="pg-domestic">
+  <div class="wrap" id="domestic-content"></div>
+</div>
+
+<!-- COUNTRY DETAIL -->
+<div class="page" id="pg-country">
+  <div class="wrap">
+    <button class="back-btn" onclick="goPage('domestic')">← العودة لقائمة الدول</button>
+    <div id="country-detail-block"></div>
+  </div>
+</div>
+
+<!-- COMPETITION DETAIL -->
+<div class="page" id="pg-comp">
+  <div class="wrap">
+    <button class="back-btn" id="comp-back" onclick="handleCompBack()">← العودة</button>
+    <div id="comp-detail-block"></div>
+  </div>
+</div>
+
+<!-- ARAB CUP EDITION LIST -->
+<div class="page" id="pg-arab-cup">
+  <div class="wrap">
+    <button class="back-btn" onclick="goPage('national')">← العودة للمنتخبات</button>
+    <div class="pg-title">كأس العرب للمنتخبات</div>
+    <div class="pg-sub">1963 — 2021 · 11 نسخة · اضغط على أي نسخة لاستعراض مبارياتها</div>
+    <div class="ed-grid" id="arab-cup-editions-grid"></div>
+  </div>
+</div>
+
+<!-- ARAB CUP EDITION DETAIL -->
+<div class="page" id="pg-edition">
+  <div class="wrap">
+    <button class="back-btn" onclick="goPage('arab-cup')">← العودة لقائمة النسخ</button>
+    <div id="edition-hero-block"></div>
+    <div class="ed-layout">
+      <aside class="ed-sidebar" id="ed-sidebar"></aside>
+      <div id="ed-main"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MATCH DETAIL -->
+<div class="page" id="pg-match">
+  <div class="wrap">
+    <button class="back-btn" id="match-back" onclick="goPage('edition')">← العودة للمباريات</button>
+    <div id="match-detail-block"></div>
+  </div>
+</div>
+
+<!-- HISTORY -->
+<div class="page" id="pg-history">
+  <div class="wrap">
+    <div class="pg-title">السجل التاريخي</div>
+    <div class="pg-sub">أبطال وإحصاءات جميع نسخ كأس العرب</div>
+    <div class="sec-hd"><h3>كأس العرب للمنتخبات — جميع النسخ</h3><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="htbl" id="history-tbl"></table></div>
+    <div class="sec-hd"><h3>أرقام قياسية</h3><div class="sec-hd-line"></div></div>
+    <div class="rec-grid" id="records-block"></div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-logo">AFL</div>
+  <p class="footer-txt">المكتبة العربية لكرة القدم — مشروع أرشفة مستقل · البيانات من RSSSF وسجلات الاتحادات الرسمية</p>
+  <p class="footer-copy">© 2025 Arab Football Library</p>
+</footer>
+
+<script src="data/arabcup.js"></script>
+<script src="data/domestic.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
