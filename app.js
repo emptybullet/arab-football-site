@@ -163,16 +163,11 @@ function renderRound(i) {
   const e = S.edition;
   if (i === 'standings') { renderStandings(); return; }
   const r = e.rounds[i];
-   if (!r) {
-  document.getElementById('ed-main').innerHTML =
-    '<div class="wip-box">No round data found.</div>';
-  return;
-}
   document.getElementById('ed-main').innerHTML = `
     <div class="sec-hd"><h3>${r.label}</h3><div class="sec-hd-line"></div></div>
     <div class="m-list">
-${(r.matches || []).map((m, mi) => `
-<div class="mc ${m.isFinal?'final':''}" onclick="openMatch(${i},${mi})">
+      ${r.matches.map((m, mi) => `
+        <div class="mc ${m.isFinal?'final':''}" onclick="openMatch(${i},${mi})">
           <div class="mh"><div class="m-team">${m.h} ${fl(m.h)}</div><div class="m-date">${m.date||''}</div></div>
           <div class="msb"><span class="msc">${m.s}</span><span class="mslbl">${m.isFinal?'🏆':'نتيجة'}</span></div>
           <div class="ma"><div class="m-team">${fl(m.a)} ${m.a}</div><div class="m-date">${m.venue||''}</div></div>
@@ -207,9 +202,8 @@ function renderStandings() {
 function openMatch(ri, mi) {
   const e = S.edition;
   const r = e.rounds[ri];
-const m = (r.matches || [])[mi];
-if (!m) return;
-   document.getElementById('match-detail-block').innerHTML = `
+  const m = r.matches[mi];
+  document.getElementById('match-detail-block').innerHTML = `
     <div class="match-hero">
       <div class="mh-grid">
         <div class="mht"><span class="mhflag">${fl(m.h)}</span><div class="mhname">${m.h}</div></div>
@@ -226,8 +220,8 @@ if (!m) return;
     <div class="det-grid">
       <div class="det-card">
         <h4>الأهداف</h4>
-Array.isArray(m.goals) && m.goals.length
-? m.goals.map(g=>`<div class="g-row"><span class="g-ico">⚽</span><span>${g}</span></div>`).join('')
+        ${m.goals && m.goals.length
+          ? m.goals.map(g=>`<div class="g-row"><span class="g-ico">⚽</span><span>${g}</span></div>`).join('')
           : '<span style="color:var(--t4);font-size:13px">مباراة بلا أهداف</span>'}
       </div>
       <div class="det-card">
